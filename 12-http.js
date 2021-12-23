@@ -1,0 +1,25 @@
+const http = require('http')
+
+const server = http.createServer((req, res) => {
+    if (req.url === '/') {
+        res.end('Welcome to our home page')
+    }
+    if (req.url === '/about') {
+        res.end('Here is our short story')
+    }
+    res.end(`
+    <h1>Oops!</h1>
+    <p>We can't seem to find the page you are looking for</p>
+    <a href="/">back home</a>`
+    )
+})
+/*
+const server = http.createServer((req, res) => {
+    res.write('Welcome to our home page')
+    res.end()
+})
+*/
+// this code throw an error, unhandled 'error event', 
+//this error may happened as the difference node version with tutorial
+
+server.listen(5000)
